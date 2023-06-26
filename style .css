@@ -1,0 +1,70 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+}
+
+:root {
+	font-size: 62.5%
+}
+
+body {
+	height: 100vh;
+	background-color: lightgoldenrodyellow;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 2rem;
+	cursor: pointer;
+
+}
+
+.parent {
+	height: 36rem;
+	width: 36rem;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	gap: .1rem;
+
+}
+
+.item {
+	border-radius: .7rem;
+	background-color: lightcoral;
+
+
+}
+
+.score, h1 {
+	margin: 2rem;
+}
+
+.modal-container {
+	width: 60vh;
+	/* aspect-ratio: 1/1; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	display: none;
+	transition: all 0.5s ease-in-out;
+	text-align: center;
+	font-size: 2rem;
+	background-color: rgb(227, 240, 240);
+
+}
+
+.avatar {
+	width: 45rem;
+	height: 45rem;
+	max-width: fit-content;
+	object-fit: cover;
+}
+
+.show {
+	display: flex;
+	pointer-events: visible;
+}
