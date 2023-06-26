@@ -9,64 +9,54 @@ const closeBtn = document.querySelector('.modal-btn');
 const modalP = document.querySelector('.modal p');
 const scoreText = document.querySelector('.score');
 
-
 closeBtn.addEventListener('click', function () {
-    modalContainer.classList.remove('show');
-    initialGame();
+	modalContainer.classList.remove('show');
+	initialGame();
 });
 let score;
 
 initialGame();
 
 function initialGame() {
-    score = 0;
-    scoreText.innerHTML = "deine Score : 0";
-    colorizeItems;
+	score = 0;
+	scoreText.innerHTML = "deine Score : 0";
+	colorizeItems;
 
 }
 colorizeItems();
 
 function colorizeItems() {
 
-    let mainColor = colors[Math.floor(Math.random() * colors.length)];
+	let mainColor = colors[Math.floor(Math.random() * colors.length)];
 
-    items.forEach(item => item.style.backgroundColor = mainColor);
+	items.forEach(item => item.style.backgroundColor = mainColor);
 
-    let r = Math.floor(Math.random() * (rows * cols));
-    items[r].style.backgroundColor = LightenDarkenColor(mainColor, 50);
+	let r = Math.floor(Math.random() * (rows * cols));
+	items[r].style.backgroundColor = LightenDarkenColor(mainColor, 50);
 
-    function LightenDarkenColor(color, amount) {
-        return '#' + color.replace(/^#/, '').replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
-    }
+	function LightenDarkenColor(color, amount) {
+		return '#' + color.replace(/^#/, '').replace(/../g, color => ('0' + Math.min(255, Math.max(0, parseInt(color, 16) + amount)).toString(16)).substr(-2));
+	}
 
-
-    items.forEach((item, number) => {
-        if (r === number) {
-            item.removeEventListener('click', loseGame);
-
-            item.addEventListener('click', nextLevel);
-
-
-        } else {
-            item.removeEventListener('click', nextLevel);
-
-            item.addEventListener('click', loseGame);
-
-        }
-
-    });
+	items.forEach((item, number) => {
+		if (r === number) {
+			item.removeEventListener('click', loseGame);
+			item.addEventListener('click', nextLevel);
+		} else {
+			item.removeEventListener('click', nextLevel);
+			item.addEventListener('click', loseGame);
+		}
+	});
 }
 
-
 function nextLevel() {
-    score++;
-    scoreText.innerHTML = 'dein Ergebnis:' + score;
-    colorizeItems();
+	score++;
+	scoreText.innerHTML = 'dein Ergebnis:' + score;
+	colorizeItems();
 }
 
 function loseGame() {
-
-    modalP.innerHTML = ' dein Ergebnis:' + score;
-    modalContainer.classList.add('show');
-    colorizeItems;
+	modalP.innerHTML = ' dein Ergebnis:' + score;
+	modalContainer.classList.add('show');
+	colorizeItems;
 }
